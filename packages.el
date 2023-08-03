@@ -99,4 +99,12 @@
 
 (package! lsp-treemacs)
 
+(package! exec-path-from-shell)
+
+(package! nov)
+
+(package! jinja2-mode)
+
+(package! ox-pandoc)
+
 (unpin! org-roam company-org-roam)

@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "DeadUnderscoreMeme"
+(setq user-full-name "DeadMeme"
       user-mail-address "deadunderscorememe@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -27,11 +27,11 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-snazzy)
 (setq doom-themes-treemacs-theme "doom-colors")
-(setq doom-font (font-spec :family "Fira Code" :size 14)
+(setq doom-font (font-spec :family "MesloLGS NF" :size 16)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 16)
-      doom-big-font (font-spec :family "Fira Code"))
+      doom-big-font (font-spec :family "MesloLGS NF" :size 19))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -126,7 +126,7 @@
   "Return t if FILEPATH is within any of `projectile-ignored-projects'"
   (or (mapcar (lambda (p) (s-starts-with-p p filepath)) projectile-ignored-projects)))
 
-(setq ispell-dictionary "en-custom")
+;;(setq ispell-dictionary "en-US")
 
 (use-package! etrace
   :after elp)
@@ -648,3 +648,14 @@ is selected, only the bare key is returned."
        "n" #'org-projectile-project-todo-completing-read
        "c" #'org-capture))
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
+(after! rustic
+  (setq rustic-lsp-server 'rust-analyzer))
+
+(setq conda-env-home-directory (expand-file-name "~/home/deadmeme/.conda/envs/"))
+
+(setq lsp-auto-guess-root 'nil)
+
+(lsp-treemacs-sync-mode 1)
